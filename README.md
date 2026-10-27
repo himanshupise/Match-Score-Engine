@@ -54,7 +54,7 @@ The skill runs whenever a recruiter asks the Genie for generating a match score,
 
 | Order | Asset | What it does |
 | --- | --- | --- |
-| 1 | `[MSE] │ Skill │ 001 Match Score generation` | Reads one job description file and multiple resume files, scores each candidate against the job description using OpenAI. |
+| 1 | `[MSG] │ Skill │ 001 Match Score generation` | Reads one job description file and multiple resume files, scores each candidate against the job description using OpenAI. |
 | 2 | Match Scoring Genie | Receives the request in Slack, calls the skill, and shows the match score report and candidate ranking. |
 
 ### Callable recipes
@@ -84,7 +84,7 @@ The package has no lookup tables and no environment properties today. If a custo
 
 | Asset type | Name | Count | Purpose |
 | --- | --- | --- | --- |
-| Skill recipe | `[MSE] │ Skill │ 001 Match Score generation` | 1 | Generates match scores for each resume against a job description. |
+| Skill recipe | `[MSG] │ Skill │ 001 Match Score generation` | 1 | Generates match scores for each resume against a job description. |
 | Genie | Match Scoring Genie | 1 | Slack entry point for recruiters. It ships with no skills attached, so you must attach the skill after import. |
 | Data table | `matchscore_openai_audit` | 1 | Audit log of each OpenAI scoring call. |
 | Connections | OpenAI account, Slack connection | 2 | Connection shells. Credentials never travel with the package. |
@@ -218,7 +218,7 @@ Do not add customer users to the parent Development workspace unless they are co
 
 **Customers should not change:**
 
-- The core scoring logic of the `[MSE] | Skill | 001 Match Score generation` recipe
+- The core scoring logic of the `[MSG] | Skill | 001 Match Score generation` recipe
 - The scoring method, including how the match tier and final score are calculated
 - Anything in another customer's workspace
 
@@ -227,7 +227,7 @@ Do not add customer users to the parent Development workspace unless they are co
 **Package import**
 
 - [ ] Package version noted and zip stored in the release location
-- [ ] Skill recipe present (`[MSE] | Skill | 001 Match Score generation`)
+- [ ] Skill recipe present (`[MSG] | Skill | 001 Match Score generation`)
 - [ ] Data table present (`matchscore_openai_audit`)
 - [ ] Connections connected (OpenAI account, Slack)
 - [ ] Genie present and configured (Match Scoring Genie)
